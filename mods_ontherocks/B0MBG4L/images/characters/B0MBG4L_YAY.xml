@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="B0MBG4L_YAY.png">
+	<!-- Created with Adobe Animate version 21.0.4.39603 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="danceLeft0000" x="0" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0001" x="0" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0002" x="342" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0003" x="342" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0004" x="684" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0005" x="684" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0006" x="1026" y="0" width="332" height="438"/>
+	<SubTexture name="danceLeft0007" x="1026" y="0" width="332" height="438"/>
+	<SubTexture name="danceRight0000" x="1368" y="0" width="395" height="438"/>
+	<SubTexture name="danceRight0001" x="1368" y="0" width="395" height="438"/>
+	<SubTexture name="danceRight0002" x="0" y="448" width="395" height="438"/>
+	<SubTexture name="danceRight0003" x="0" y="448" width="395" height="438"/>
+	<SubTexture name="danceRight0004" x="405" y="448" width="395" height="438"/>
+	<SubTexture name="danceRight0005" x="405" y="448" width="395" height="438"/>
+	<SubTexture name="danceRight0006" x="810" y="448" width="395" height="438"/>
+	<SubTexture name="danceRight0007" x="810" y="448" width="395" height="438"/>
+</TextureAtlas>

@@ -1,0 +1,45 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				59,
+				-8
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceLeft",
+			"indices": [],
+			"name": "danceLeft"
+		},
+		{
+			"offsets": [
+				14,
+				-8
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceRight",
+			"indices": [],
+			"name": "danceRight"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/B0MBG4L_YAY",
+	"position": [
+		10,
+		300
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		120,
+		0,
+		180
+	],
+	"camera_position": [
+		105,
+		38
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

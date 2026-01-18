@@ -11,6 +11,9 @@ import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import states.editors.MasterEditorMenu;
 import options.OptionsState;
+import openfl.display.Shape;
+import openfl.display.BitmapData;
+import flixel.graphics.FlxGraphic;
 
 class CodeBG extends FlxSpriteGroup {
 
@@ -76,21 +79,26 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxText>;
 
 	var optionShit:Array<String> = [
-		'jams',
+		'story',
 		'members',
 		'settings'
 	];
 
-	var fire:FunkinSprite;
-	var logo:FlxSprite;
-
+	
+	var belly:FlxSprite;
+	var chickenOnTheRocks:FlxSprite;
+	var bg:FlxSprite;
+	var weird:FlxSprite;
 	override function create()
 	{
 		// Paths.clearStoredMemory();
 		// Paths.clearUnusedMemory();
 		//if(FlxG.sound.music == null) 
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('goonsong'), 0);
 
+		//trace("Directory of music:" + Paths.music('goonsong'));
+
+		Conductor.bpm = 127;
 
 			
 
@@ -112,19 +120,40 @@ class MainMenuState extends MusicBeatState
 		// var test = new CodeBG(5,0,FlxG.width * 2);
 		// add(test);
 
-		fire = new FunkinSprite();
-		fire.frames = Paths.getSparrowAtlas('menu/rolbox/sm/fire');
-		fire.animation.addByPrefix('i','fire',24);
-		fire.animation.play('i');
-		add(fire);
+		bg = new FlxSprite();
+		bg.loadGraphic(Paths.image('boob/ZambieBG'));
+		bg.screenCenter();
+		bg.origin.set(bg.width / 2, bg.height / 2);
+		add(bg);
 
-		logo = new FlxSprite(0,50);
-		logo.frames = Paths.getSparrowAtlas('menu/rolbox/sm/logo');
-		logo.animation.addByPrefix('i','appear',24,false);
-		logo.animation.play('i');
-		logo.screenCenter(X);
-		add(logo);
-		logo.scale.set(1.25,1.25);
+		var uiRect = new FlxSprite(0, 0);
+		uiRect.makeGraphic(230, FlxG.height, FlxColor.BLACK);
+		add(uiRect);
+
+		belly = new FlxSprite();
+		belly.loadGraphic(Paths.image('boob/belly'));
+		belly.screenCenter();
+		belly.origin.set(belly.width / 2, belly.height / 2);
+		
+		belly.scale.set(0.5,0.4);
+		belly.x -= 215;
+		belly.y -= 185;
+		add(belly);
+
+
+		chickenOnTheRocks = new FlxSprite(330,50);
+		chickenOnTheRocks.loadGraphic(Paths.image('boob/ChickenOnTheRocks'));
+		chickenOnTheRocks.scale.set(0.50,0.50);
+		chickenOnTheRocks.angle = 10;
+		add(chickenOnTheRocks);
+
+		var timeOfPeak = 2;
+
+
+		
+
+
+
 
 		menuItems = new FlxTypedGroup<FlxText>();
 		add(menuItems);
@@ -133,12 +162,12 @@ class MainMenuState extends MusicBeatState
 		{
 
 			var scale = FlxG.random.int(1,4);
-			var tex = new FlxText(0,350 + (i * (40 + 30)),0,optionShit[i],40);
+			var tex = new FlxText(-60,350 + (i * (40 + 30)),0,optionShit[i],40);
 			tex.font = Paths.font('ARIAL.TTF');
 			var width = tex.width;
 			tex.size = Std.int(tex.size/scale);
 			tex.setScale(scale);
-			tex.screenCenter(X);
+			tex.x = 50;
 			if (i == FlxG.random.int(0,optionShit.length)) {
 				tex.x += FlxG.random.int(5,20);
 				tex.y += FlxG.random.int(-10,0);
@@ -149,11 +178,17 @@ class MainMenuState extends MusicBeatState
 
 
 
-		spawn();
+		//spawn();
 		changeItem();
+		selectedSomethin = false;
+		scrollingTriangles();
+
+
 		super.create();
 	}
 
+
+/*
 	function spawn() 
 	{
 
@@ -174,9 +209,9 @@ class MainMenuState extends MusicBeatState
 			fire.y = FlxG.height - fire.height + 25;
 		});
 	}
-
+*/
 	var selectedSomethin:Bool = true;
-
+	var logoScale:Float = 0.5;
 	override function update(elapsed:Float)
 	{
 		if (FlxG.keys.justPressed.FOUR) FlxG.resetState();
@@ -189,8 +224,12 @@ class MainMenuState extends MusicBeatState
 				if (FreeplayState.vocals != null)
 					FreeplayState.vocals.volume += 0.5 * elapsed;
 			}
+			Conductor.songPosition = FlxG.sound.music.time;
 		}
-
+		
+		chickenOnTheRocks.scale.set(FlxMath.lerp(chickenOnTheRocks.scale.x,logoScale,elapsed * 3),FlxMath.lerp(chickenOnTheRocks.scale.y,logoScale,elapsed * 3));
+		bg.scale.set(FlxMath.lerp(bg.scale.x, 1.0, elapsed * 3), FlxMath.lerp(bg.scale.y, 1.0, elapsed * 3));
+		//belly.scale.set(FlxMath.lerp(belly.scale.x, 0.5, elapsed * 3), FlxMath.lerp(belly.scale.y, 0.4, elapsed * 3));
 		if (!selectedSomethin)
 		{
 			// if (FlxG.keys.justPressed.T) {
@@ -210,7 +249,7 @@ class MainMenuState extends MusicBeatState
 				{
 					switch (optionShit[curSelected])
 					{
-						case 'jams':
+						case 'story':
 							openSubState(new PlayMenu());
 							// MusicBeatState.switchState(new PlayMenu());
 						case 'members':
@@ -241,6 +280,14 @@ class MainMenuState extends MusicBeatState
 		super.update(elapsed);
 	}
 
+	override function beatHit()
+	{
+		super.beatHit();
+		chickenOnTheRocks.scale.set(logoScale + 0.05, logoScale + 0.05);
+		bg.scale.set(1.05, 1.05);
+		//belly.scale.set(0.5 * 1.05, 0.4 * 1.05);
+	}
+
 	function changeItem(huh:Int = 0)
 	{
 		if (huh != 0)
@@ -251,4 +298,32 @@ class MainMenuState extends MusicBeatState
 		menuItems.members[curSelected].color = FlxColor.YELLOW;
 
 	}
+
+		function scrollingTriangles(){
+		var triangleHeight = 40;
+		var triangleWidth = 60;
+		var numTriangles = 10;
+		var graphicWidth = triangleWidth * numTriangles;
+		var graphicHeight = triangleHeight;
+		var bitmap = new BitmapData(graphicWidth, graphicHeight, true, 0x00000000);
+		var shape = new Shape();
+		var g = shape.graphics;
+		g.beginFill(0xFF000000);
+		for (i in 0...numTriangles) {
+			var x = i * triangleWidth;
+			g.moveTo(x + triangleWidth / 2, 0);
+			g.lineTo(x, triangleHeight);
+			g.lineTo(x + triangleWidth, triangleHeight);
+			g.lineTo(x + triangleWidth / 2, 0);
+		}
+		g.endFill();
+		bitmap.draw(shape);
+		var triangleGraphic = FlxGraphic.fromBitmapData(bitmap);
+		var triangleBackdrop = new FlxBackdrop(triangleGraphic, X);
+		triangleBackdrop.y = FlxG.height - triangleHeight;
+		triangleBackdrop.velocity.x = -100;
+		add(triangleBackdrop);
+	}
+
+
 }
