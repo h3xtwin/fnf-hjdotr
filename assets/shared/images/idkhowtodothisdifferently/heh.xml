@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="heh.png">
+	<!-- Created with Adobe Animate version 21.0.4.39603 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Gassy10000" x="10" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10001" x="10" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10002" x="10" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10003" x="10" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10004" x="10" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10005" x="903" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10006" x="903" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10007" x="903" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10008" x="903" y="10" width="893" height="708"/>
+	<SubTexture name="Gassy10009" x="903" y="10" width="893" height="708"/>
+</TextureAtlas>

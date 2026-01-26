@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Epsteinstatic.png">
+	<!-- Created with Adobe Animate version 21.0.4.39603 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Epsteinfilesstatic0000" x="10" y="10" width="640" height="640"/>
+	<SubTexture name="Epsteinfilesstatic0001" x="650" y="10" width="640" height="640"/>
+	<SubTexture name="Epsteinfilesstatic0002" x="1290" y="10" width="640" height="640"/>
+	<SubTexture name="Epsteinfilesstatic0003" x="10" y="650" width="640" height="640"/>
+	<SubTexture name="Epsteinfilesstatic0004" x="650" y="650" width="640" height="640"/>
+	<SubTexture name="Epsteinfilesstatic0005" x="1290" y="650" width="640" height="640"/>
+	<SubTexture name="Epsteinfilesstatic0006" x="1290" y="650" width="640" height="640"/>
+</TextureAtlas>
